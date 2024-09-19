@@ -10,10 +10,11 @@ from Data_Base import add_more_rider , rider_check
 import threading
 import subprocess
 import os
-
+import requests
+check = None
 Text_Pic = ""
 server_process = None
-
+last_data = None
 def Admin():
     def Rider():
         Ride = Toplevel(panel)
@@ -52,11 +53,12 @@ def Admin():
     global process_frame
 
     def Start_Server():
-        global server_process
+        global server_process , check
         server_script = "Server.py"
         if server_process is None or server_process.poll() is not None:
             server_process = subprocess.Popen(["python",server_script],cwd=os.getcwd())
             print("Server Started")
+            check = True
     def Stop_Server():
         global server_process
         if server_process is not None:
@@ -113,15 +115,16 @@ def Admin():
         Text_Pic = "".join(Text.copy())
         Text_Pic = Text_Pic.replace(" ","")
         Text_Pic = Text_Pic.lower()
+        print(Text_Pic)
         if Picture is not None:
-            Picture = resize_frame(Picture,target_width=640)
+            Picture = resize_frame(Picture.copy(),target_width=640)
             image = cv2.cvtColor(Picture, cv2.COLOR_BGR2RGB)
             image = Image.fromarray(image)
             img_tk = ImageTk.PhotoImage(image=image)
             label_video.img_tk = img_tk
             label_video.config(image=img_tk)
     def info_update():
-        global Text_Pic
+        global Text_Pic , last_data , check
         info = rider_check(Text_Pic)
         if info is None:
             # Handle the case when no rider information is found
@@ -136,8 +139,25 @@ def Admin():
             Phone_2.config(fg="green", text=info[2])
             Color_2.config(fg="green", text=info[3])
             Car_Brand_2.config(fg="green", text=info[4])
+        if check is not None:
+            get_request()
         panel.after(1000,info_update)
+    def get_request():
+        global last_data
+        try:
+            response = requests.get("http://127.0.0.1:5001/data")  # Adjust URL as needed
 
+            if response.status_code == 200 and response.text:
+                data = response.text
+                last_data = data.copy()
+                Order.config(text=last_data,fg="green")
+            else:
+                messagebox.showerror("Error", f"Failed to retrieve data: {response.text}")
+
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {str(e)}")
+    def Send():
+        global last_data
     panel = tk.Tk()
     panel.title("Administrator")
     panel.geometry("1100x600")
@@ -162,7 +182,12 @@ def Admin():
     Car_Brand = tk.Label(panel,text="Car Brand",font=("Arial",18))
     Car_Brand.place(x=900,y=250)
     Car_Brand_2 = tk.Label(panel,text="5",font=("Arial",18),fg="black")
-    Car_Brand_2.place(x=900,y=300)
+    Car_Brand_2.place(x=700,y=300)
+
+    Order = tk.Label(panel,text=0,font=("Arial",18),fg="black")
+    Order.place(x=700,y=350)
+    Order_Button = tk.Button(panel,text="Send Order",command=Send)
+    Order_Button.place(x=700,y=550)
 
     show_vdo_button = tk.Button(panel,text="Show Video",command=show)
     show_vdo_button.place(x=50,y=500)

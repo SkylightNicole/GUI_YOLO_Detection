@@ -97,7 +97,7 @@ def resize_frame(frame, width=None, height=None):
 
 def recognized():
     global stop_thread , run , frame
-    video = cv2.VideoCapture("C:\\Users\\DarkSky\\Desktop\\MyWorkSpace\\Python\\Plate Recognition\\code\\Picture\\Car_70.mp4")
+    video = cv2.VideoCapture(".\\Picture\\Car_70.mp4")
     if not video.isOpened():
         print("Error: Could not open video.")
         exit()
