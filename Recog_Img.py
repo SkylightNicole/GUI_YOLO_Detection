@@ -3,7 +3,7 @@ import cv2
 import easyocr
 import threading
 model = YOLO("best.pt")
-path = ".\\Picture\\Pic.jpg"
+path = ".\\Picture\\plate.jpg"
 reader = easyocr.Reader(["en"],gpu=True)
 
 def Img_Reg():

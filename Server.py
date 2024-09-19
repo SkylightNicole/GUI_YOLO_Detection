@@ -27,14 +27,15 @@ def send_data():
     # This could be any data you want to return
     if last_data is not None:
         return last_data, 200 , {'Content-Type': 'text/plain'}
-    return None
+    return "No Data Available" , 400
 
 def run_ngrok():
     # Run ngrok as a subprocess
-    time.sleep(3)  # Allow some time for Flask to start
-    subprocess.run(["ngrok", "http", "5001"])  # Change port if necessary
+    command = "ngrok http --domain=bright-donkey-exact.ngrok-free.app 5001"
+    time.sleep(2)  # Allow some time for Flask to start
+    subprocess.Popen(["cmd.exe","/k",command])
 
 if __name__ == "__main__":
     ngrok_thread = threading.Thread(target=run_ngrok)
     ngrok_thread.start()
-    app.run(host="0.0.0.0", port=5001 , debug=True)
+    app.run(host="0.0.0.0", port=5001)

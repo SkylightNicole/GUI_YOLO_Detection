@@ -11,6 +11,7 @@ import threading
 import subprocess
 import os
 import requests
+
 check = None
 Text_Pic = ""
 server_process = None
@@ -52,6 +53,29 @@ def Admin():
 
     global process_frame
 
+    def send_line_message(message, user_id, access_token):
+        url = 'https://api.line.me/v2/bot/message/push'
+        
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {access_token}',
+        }
+        
+        data = {
+            "to": user_id,  # Replace this with the Line user ID or group ID you want to send the message to
+            "messages": [{
+                "type": "text",
+                "text": message,
+            }]
+        }
+        
+        response = requests.post(url, headers=headers, json=data)
+        
+        if response.status_code == 200:
+            print('Message sent successfully')
+        else:
+            print(f'Failed to send message: {response.status_code}, {response.text}')
+
     def Start_Server():
         global server_process , check
         server_script = "Server.py"
@@ -90,6 +114,7 @@ def Admin():
             Text_Pic = "".join(Text_Pic)
             Text_Pic = Text_Pic.replace(" ","")
             Text_Pic = Text_Pic.lower()
+            print(Text_Pic)
         if frame is not None:
             # Resize the frame to fit into the Tkinter window
             frame = resize_frame(frame, target_width=640)  # Adjust the size as needed
@@ -127,12 +152,7 @@ def Admin():
         global Text_Pic , last_data , check
         info = rider_check(Text_Pic)
         if info is None:
-            # Handle the case when no rider information is found
-            plate_name_2.config(fg="red", text="No Data")
-            Name_2.config(fg="red", text="No Data")
-            Phone_2.config(fg="red", text="No Data")
-            Color_2.config(fg="red", text="No Data")
-            Car_Brand_2.config(fg="red", text="No Data")
+            pass
         else:
             plate_name_2.config(fg="green", text=info[0])
             Name_2.config(fg="green", text=info[1])
@@ -149,10 +169,8 @@ def Admin():
 
             if response.status_code == 200 and response.text:
                 data = response.text
-                last_data = data.copy()
+                last_data = data
                 Order.config(text=last_data,fg="green")
-            else:
-                messagebox.showerror("Error", f"Failed to retrieve data: {response.text}")
 
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {str(e)}")
@@ -165,24 +183,24 @@ def Admin():
     label_video.place(x=25,y=10)
     plate_name = tk.Label(panel,text="Plate",font=("Arial",18))
     plate_name.place(x=800,y=50)
-    plate_name_2 = tk.Label(panel,text="1",font=("Arial",18),fg="black")
+    plate_name_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     plate_name_2.place(x=800,y=100)
     Name = tk.Label(panel,text="Name",font=("Arial",18))
     Name.place(x=700,y=150)
-    Name_2 = tk.Label(panel,text="2",font=("Arial",18),fg="black")
+    Name_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Name_2.place(x=700,y=200)
     Phone = tk.Label(panel,text="Phone Number",font=("Arial",18))
     Phone.place(x=900,y=150)
-    Phone_2 = tk.Label(panel,text="3",font=("Arial",18),fg="black")
+    Phone_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Phone_2.place(x=900,y=200)
     Color = tk.Label(panel,text="Color",font=("Arial",18))
     Color.place(x=700,y=250)
-    Color_2 = tk.Label(panel,text="4",font=("Arial",18),fg="black")
+    Color_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Color_2.place(x=700,y=300)
     Car_Brand = tk.Label(panel,text="Car Brand",font=("Arial",18))
     Car_Brand.place(x=900,y=250)
-    Car_Brand_2 = tk.Label(panel,text="5",font=("Arial",18),fg="black")
-    Car_Brand_2.place(x=700,y=300)
+    Car_Brand_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
+    Car_Brand_2.place(x=900,y=300)
 
     Order = tk.Label(panel,text=0,font=("Arial",18),fg="black")
     Order.place(x=700,y=350)
