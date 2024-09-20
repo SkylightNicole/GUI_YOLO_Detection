@@ -1,5 +1,7 @@
 import sqlite3 as sql
 import os
+import subprocess
+import sys
 
 def Setup():
     try:
@@ -12,3 +14,14 @@ def Setup():
     finally:
         connect.close()
         print("Login Database successfully created!")
+    try:
+        # Check if requirements.txt exists
+        if os.path.exists('requirements.txt'):
+            # Install the dependencies
+            subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
+            print("Requirements installed successfully!")
+        else:
+            print("No requirements.txt file found!")
+    except Exception as e:
+        print(f"Error installing requirements: {e}")
+    

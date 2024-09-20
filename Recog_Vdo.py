@@ -97,7 +97,8 @@ def resize_frame(frame, width=None, height=None):
 
 def recognized():
     global stop_thread , run , frame
-    video = cv2.VideoCapture("C:\\Users\\DarkSky\\Desktop\\MyWorkSpace\\Python\\Plate Recognition\\code\\Picture\\Car_70.mp4")
+    stop_thread = False
+    video = cv2.VideoCapture("D:\\DarkSky\\GUI_YOLO_Detection-main\\GUI_YOLO_Detection-main\\Picture\\Car_70.mp4")
     if not video.isOpened():
         print("Error: Could not open video.")
         exit()
@@ -116,6 +117,7 @@ def recognized():
             video_detection.start()
         if not check:
             print("Reached the end of the video or error occurred.")
+            run = 0
             break
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break

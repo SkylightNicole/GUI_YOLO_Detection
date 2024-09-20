@@ -3,6 +3,7 @@ from tkinter import StringVar
 from tkinter import Toplevel
 from tkinter import messagebox
 import cv2
+from dotenv import load_dotenv
 from PIL import Image , ImageTk
 from Recog_Vdo import recognized , get_current_frame , get_current_text
 from Recog_Img import Img_Reg
@@ -10,10 +11,12 @@ from Data_Base import add_more_rider , rider_check
 import threading
 import subprocess
 import os
+import requests
 
+check = None
 Text_Pic = ""
 server_process = None
-
+last_data = None
 def Admin():
     def Rider():
         Ride = Toplevel(panel)
@@ -50,13 +53,23 @@ def Admin():
         submit = tk.Button(Ride,text="Add",command=add).place(x=30,y=250)
 
     global process_frame
-
+    def send_line_message(token, message):
+        url = "https://notify-api.line.me/api/notify"
+        headers = {
+            "Authorization": f"Bearer {token}"
+        }
+        data = {
+            "message": message
+        }
+        response = requests.post(url, headers=headers, data=data)
+        return response.status_code
     def Start_Server():
-        global server_process
+        global server_process , check
         server_script = "Server.py"
         if server_process is None or server_process.poll() is not None:
             server_process = subprocess.Popen(["python",server_script],cwd=os.getcwd())
-            print("Server Started")
+            messagebox.showinfo("Server Start Successfully")
+            check = True
     def Stop_Server():
         global server_process
         if server_process is not None:
@@ -88,6 +101,7 @@ def Admin():
             Text_Pic = "".join(Text_Pic)
             Text_Pic = Text_Pic.replace(" ","")
             Text_Pic = Text_Pic.lower()
+            print(Text_Pic)
         if frame is not None:
             # Resize the frame to fit into the Tkinter window
             frame = resize_frame(frame, target_width=640)  # Adjust the size as needed
@@ -113,31 +127,50 @@ def Admin():
         Text_Pic = "".join(Text.copy())
         Text_Pic = Text_Pic.replace(" ","")
         Text_Pic = Text_Pic.lower()
+        print(Text_Pic)
         if Picture is not None:
-            Picture = resize_frame(Picture,target_width=640)
+            Picture = resize_frame(Picture.copy(),target_width=640)
             image = cv2.cvtColor(Picture, cv2.COLOR_BGR2RGB)
             image = Image.fromarray(image)
             img_tk = ImageTk.PhotoImage(image=image)
             label_video.img_tk = img_tk
             label_video.config(image=img_tk)
     def info_update():
-        global Text_Pic
+        global Text_Pic , last_data , check
         info = rider_check(Text_Pic)
         if info is None:
-            # Handle the case when no rider information is found
-            plate_name_2.config(fg="red", text="No Data")
-            Name_2.config(fg="red", text="No Data")
-            Phone_2.config(fg="red", text="No Data")
-            Color_2.config(fg="red", text="No Data")
-            Car_Brand_2.config(fg="red", text="No Data")
+            pass
         else:
             plate_name_2.config(fg="green", text=info[0])
             Name_2.config(fg="green", text=info[1])
             Phone_2.config(fg="green", text=info[2])
             Color_2.config(fg="green", text=info[3])
             Car_Brand_2.config(fg="green", text=info[4])
+        if check is not None:
+            get_request()
         panel.after(1000,info_update)
+    def get_request():
+        global last_data
+        try:
+            response = requests.get("http://127.0.0.1:5001/data")  # Adjust URL as needed
 
+            if response.status_code == 200 and response.text:
+                data = response.text
+                last_data = data
+                Order.config(text=last_data,fg="green")
+
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {str(e)}")
+    def Send():
+        load_dotenv()
+        access_token = os.getenv("LINE_AUTH_TOKEN")
+        global last_data
+        data_to_send = last_data
+        status_code = send_line_message(access_token,data_to_send)
+        if status_code == 200:
+            messagebox.showinfo("Message Sent Successfully")
+        else:
+            messagebox.showerror(f"Failed to Send message. Status Code : {status_code}")
     panel = tk.Tk()
     panel.title("Administrator")
     panel.geometry("1100x600")
@@ -145,24 +178,29 @@ def Admin():
     label_video.place(x=25,y=10)
     plate_name = tk.Label(panel,text="Plate",font=("Arial",18))
     plate_name.place(x=800,y=50)
-    plate_name_2 = tk.Label(panel,text="1",font=("Arial",18),fg="black")
+    plate_name_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     plate_name_2.place(x=800,y=100)
     Name = tk.Label(panel,text="Name",font=("Arial",18))
     Name.place(x=700,y=150)
-    Name_2 = tk.Label(panel,text="2",font=("Arial",18),fg="black")
+    Name_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Name_2.place(x=700,y=200)
     Phone = tk.Label(panel,text="Phone Number",font=("Arial",18))
     Phone.place(x=900,y=150)
-    Phone_2 = tk.Label(panel,text="3",font=("Arial",18),fg="black")
+    Phone_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Phone_2.place(x=900,y=200)
     Color = tk.Label(panel,text="Color",font=("Arial",18))
     Color.place(x=700,y=250)
-    Color_2 = tk.Label(panel,text="4",font=("Arial",18),fg="black")
+    Color_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Color_2.place(x=700,y=300)
     Car_Brand = tk.Label(panel,text="Car Brand",font=("Arial",18))
     Car_Brand.place(x=900,y=250)
-    Car_Brand_2 = tk.Label(panel,text="5",font=("Arial",18),fg="black")
+    Car_Brand_2 = tk.Label(panel,fg="red", text="No Data",font=("Arial",18))
     Car_Brand_2.place(x=900,y=300)
+
+    Order = tk.Label(panel,text=0,font=("Arial",18),fg="black")
+    Order.place(x=700,y=350)
+    Order_Button = tk.Button(panel,text="Send Order",command=Send)
+    Order_Button.place(x=700,y=550)
 
     show_vdo_button = tk.Button(panel,text="Show Video",command=show)
     show_vdo_button.place(x=50,y=500)
