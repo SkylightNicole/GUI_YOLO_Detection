@@ -67,11 +67,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/rider"
         android:layout_width="105dp"
         android:layout_height="92dp"
         android:layout_marginEnd="306dp"
         android:layout_marginBottom="639dp"
+        android:onClick="navi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,24 +80,26 @@
         app:srcCompat="@drawable/motorcycle" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/profile"
         android:layout_width="128dp"
         android:layout_height="231dp"
         android:layout_marginStart="196dp"
         android:layout_marginEnd="87dp"
         android:layout_marginBottom="569dp"
+        android:onClick="navi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/person" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/setting"
         android:layout_width="78dp"
         android:layout_height="146dp"
         android:layout_marginStart="325dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="612dp"
+        android:onClick="navi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

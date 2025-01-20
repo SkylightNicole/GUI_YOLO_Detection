@@ -63,19 +63,6 @@ def Admin():
         }
         response = requests.post(url, headers=headers, data=data)
         return response.status_code
-    def Start_Server():
-        global server_process , check
-        server_script = "Server.py"
-        if server_process is None or server_process.poll() is not None:
-            server_process = subprocess.Popen(["python",server_script],cwd=os.getcwd())
-            messagebox.showinfo("Server Start Successfully")
-            check = True
-    def Stop_Server():
-        global server_process
-        if server_process is not None:
-            server_process.terminate()
-            server_process = None
-            print("Server Stopped")
     def resize_frame(frame, target_width=None, target_height=None):
         '''Resize the frame while maintaining aspect ratio.'''
         original_height, original_width = frame.shape[:2]
@@ -208,14 +195,10 @@ def Admin():
     show_img_button = tk.Button(panel,text="Show Picture",command=show_pic)
     show_img_button.place(x=150,y=500)
 
-    Run_Server = tk.Button(panel,text="Start Server",command=Start_Server)
-    Run_Server.place(x=50,y=550)
-
     Add_Rider = tk.Button(panel,text="Add Rider",command=Rider)
     Add_Rider.place(x=150,y=550)
     info_update()
     panel.mainloop()
-    Stop_Server()
 
 if __name__ == "__main__" :
     Admin()

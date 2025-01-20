@@ -25,4 +25,10 @@
     <string name="Menu">Menu</string>
     <string name="Min_kit">Mintakan Kitchen</string>
     <string name="Place">Placeholder</string>
+    <string name="Addr">Address</string>
+    <string name="Logout">Logout</string>
+    <string name="Sound">Sound</string>
+    <string name="About">About Us</string>
+    <string name="Contact">Contact Support</string>
+    <string name="Delete">DELETE</string>
 </resources>

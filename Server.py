@@ -29,13 +29,5 @@ def send_data():
         return last_data, 200 , {'Content-Type': 'text/plain'}
     return "No Data Available" , 400
 
-def run_ngrok():
-    # Run ngrok as a subprocess
-    command = "ngrok http --domain=bright-donkey-exact.ngrok-free.app 5001"
-    time.sleep(2)  # Allow some time for Flask to start
-    subprocess.Popen(["cmd.exe","/k",command])
-
 if __name__ == "__main__":
-    ngrok_thread = threading.Thread(target=run_ngrok)
-    ngrok_thread.start()
     app.run(host="0.0.0.0", port=5001)

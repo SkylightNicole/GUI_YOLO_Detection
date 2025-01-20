@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.content.Intent;
+import android.view.View;
 
 public class Rider extends AppCompatActivity {
 
@@ -20,5 +22,14 @@ public class Rider extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    /**
+     * Navigator bar function
+     */
+    public void navi(View view)
+    {
+        share_function sharefunction = new share_function();
+        sharefunction.navigator(this, view);
     }
 }
