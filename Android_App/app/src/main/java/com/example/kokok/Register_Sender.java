@@ -2,21 +2,19 @@ package com.example.kokok;
 
 import android.util.Log;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Data_Sender{
-    public void send_data(String jsonData){
-        Log.d("Data_Sender","Function called!");
-        ApiService ApiService = Retrofit_Instance.getApiService();
+public class Register_Sender{
+    public void send_register(String Username, String Password, String Salt){
+        Log.d("Register","Function called!");
+        ApiService apiService = Retrofit_Instance.getApiService();
 
-        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"),jsonData);
+        Register_Json register_json = new Register_Json(Username,Password,Salt);
 
-        Call<ResponseBody> call = ApiService.send_data(requestBody);
+        Call<ResponseBody> call = apiService.send_register(register_json);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -24,7 +22,7 @@ public class Data_Sender{
                 {
                     try
                     {
-                        Log.d("Data_Sender","Response: " + response.body().string());
+                        Log.d("Register","Response: " + response.body().string());
                     }
                     catch (Exception e)
                     {
@@ -33,7 +31,7 @@ public class Data_Sender{
                 }
                 else
                 {
-                    Log.d("Data_Sender","Request Failed with code : " + response.code());
+                    Log.d("Register","Request Failed with code : " + response.code());
                 }
             }
 

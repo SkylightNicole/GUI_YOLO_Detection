@@ -107,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
             sb.append("NorMai : ").append(NorMai).append("\n");
         }
         String data = sb.toString();
-        Data_Sender Client = new Data_Sender();
-        Client.send_data(data);
         KhaPhow = 0;
         PadPhak = 0;
         KaiChew = 0;

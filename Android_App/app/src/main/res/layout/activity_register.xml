@@ -43,28 +43,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="213dp"
         android:layout_marginEnd="323dp"
         android:layout_marginBottom="499dp"
         android:text="@string/Reg_pass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="323dp"
-        android:layout_marginBottom="434dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="269dp"
+        android:layout_marginBottom="442dp"
         android:text="@string/Re_Reg_pass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Reg_email"
@@ -121,6 +121,7 @@
         android:layout_marginTop="373dp"
         android:layout_marginEnd="269dp"
         android:layout_marginBottom="310dp"
+        android:onClick="register"
         android:text="@string/Reg_Header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,15 +132,15 @@
         android:id="@+id/button12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="254dp"
         android:layout_marginTop="373dp"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="310dp"
+        android:onClick="back_to_login"
         android:text="@string/Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button11"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

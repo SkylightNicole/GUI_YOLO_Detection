@@ -42,13 +42,35 @@ public class Login extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,"Please fill in both field",Toast.LENGTH_SHORT).show();
+            PopUp.showpopup(this,"Error!","Please fill both field!");
         }
 
     }
 
     public void check(String email,String pass)
     {
-        ;
+        Login_Checker receive = new Login_Checker();
+        receive.get_log(email, pass, new Data_Callback() {
+            @Override
+            public void onresult(boolean success) {
+                if (success)
+                {
+                    Intent in = new Intent(Login.this, Rider.class);
+                    startActivity(in);
+                    finish();
+                }
+                else
+                {
+                    PopUp.showpopup(Login.this,"Error","Invalid Gmail or Password");
+                }
+            }
+        });
+    }
+
+    public void go_to_register(View view)
+    {
+        Intent reg = new Intent(this, Register.class);
+        startActivity(reg);
+        finish();
     }
 }

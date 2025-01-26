@@ -17,6 +17,7 @@ check = None
 Text_Pic = ""
 server_process = None
 last_data = None
+
 def Admin():
     def Rider():
         Ride = Toplevel(panel)
@@ -123,7 +124,7 @@ def Admin():
             label_video.img_tk = img_tk
             label_video.config(image=img_tk)
     def info_update():
-        global Text_Pic , last_data , check
+        global Text_Pic , last_data , check , info
         info = rider_check(Text_Pic)
         if info is None:
             pass
@@ -133,13 +134,12 @@ def Admin():
             Phone_2.config(fg="green", text=info[2])
             Color_2.config(fg="green", text=info[3])
             Car_Brand_2.config(fg="green", text=info[4])
-        if check is not None:
-            get_request()
+        get_request()
         panel.after(1000,info_update)
     def get_request():
         global last_data
         try:
-            response = requests.get("http://127.0.0.1:5001/data")  # Adjust URL as needed
+            response = requests.get("https://bright-donkey-exact.ngrok-free.app/data")  # Adjust URL as needed
 
             if response.status_code == 200 and response.text:
                 data = response.text
@@ -155,6 +155,13 @@ def Admin():
         data_to_send = last_data
         status_code = send_line_message(access_token,data_to_send)
         if status_code == 200:
+            messagebox.showinfo("Message Sent Successfully")
+        else:
+            messagebox.showerror(f"Failed to Send message. Status Code : {status_code}")
+
+        custom = [f"Plate : {info[0]} \n" , f"Name : {info[1]}\n" , f"Phone Number : {info[2]}\n" , f"Car Color : {info[3]}\n" , f"Car Brand : {info[4]}\n"]
+        status_code_rider = send_line_message(access_token,custom)
+        if status_code_rider == 200:
             messagebox.showinfo("Message Sent Successfully")
         else:
             messagebox.showerror(f"Failed to Send message. Status Code : {status_code}")

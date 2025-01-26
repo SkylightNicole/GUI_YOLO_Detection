@@ -122,141 +122,208 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/shop_white" />
 
-    <ScrollView
-        android:layout_width="414dp"
-        android:layout_height="635dp"
-        android:layout_marginTop="99dp"
-        android:layout_marginBottom="1dp"
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="121dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginBottom="502dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="159dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="217dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="508dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_5" />
 
-            <Button
-                android:text="@string/Min_kit"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rectangle" />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:text="@string/Place"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:background="@drawable/rectangle"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-    </ScrollView>
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="150dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="226dp"
+        android:layout_marginTop="295dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="325dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_3" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="138dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="295dp"
+        android:layout_marginEnd="247dp"
+        android:layout_marginBottom="325dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_4" />
+
+    <Button
+        android:id="@+id/padthai"
+        android:onClick="price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="406dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginBottom="277dp"
+        android:text="ผัดไท : 45"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/kaopad"
+        android:onClick="price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="406dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="277dp"
+        android:text="ข้าวผัด : 30"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="156dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="473dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="162dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tom_yum_kung" />
+
+    <Button
+        android:id="@+id/Sushi"
+        android:onClick="price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="572dp"
+        android:layout_marginEnd="273dp"
+        android:layout_marginBottom="111dp"
+        android:text="ซูชิ : 70"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="140dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="473dp"
+        android:layout_marginEnd="247dp"
+        android:layout_marginBottom="159dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sushi" />
+
+    <Button
+        android:id="@+id/Tomyum"
+        android:onClick="price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="572dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="111dp"
+        android:text="ต้มยำกุ้ง : 65"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/khapow"
+        android:onClick="price"
+        android:layout_width="144dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="247dp"
+        android:layout_marginEnd="243dp"
+        android:layout_marginBottom="437dp"
+        android:text="กะเพราะ : 45"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/kaijeow"
+        android:onClick="price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="222dp"
+        android:layout_marginTop="247dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="436dp"
+        android:text="ข้าวไข่เจียว : 40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ResultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="661dp"
+        android:layout_marginEnd="293dp"
+        android:layout_marginBottom="51dp"
+        android:text="Total :"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/order"
+        android:onClick="order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="649dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="34dp"
+        android:text="สั่งอาหาร"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

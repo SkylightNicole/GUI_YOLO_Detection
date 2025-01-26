@@ -32,7 +32,6 @@ def Write_Register(Username,Password):
         if connection is not None and connection.is_connected():
             cursor.close()
             connection.close()
-            print("Connection Closed Successfully")
 
 def Check(Username,Password):
     """Use to check whether Username nad Password is correct"""
@@ -69,7 +68,6 @@ def Check(Username,Password):
         if connection is not None and connection.is_connected():
             cursor.close()
             connection.close()
-            print("Connection Closed Successfully")
 
 def add_more_rider(plate,name,phone,color,brand):
     """Function to add rider to Database"""
@@ -95,7 +93,6 @@ def add_more_rider(plate,name,phone,color,brand):
         if connection is not None and connection.is_connected():
             cursor.close()
             connection.close()
-            print("Connection Closed Successfully")
 
 def rider_check(text):
     """Function to check whether they're rider or not"""
@@ -112,7 +109,7 @@ def rider_check(text):
             cursor.execute("SELECT * from Information")
             result = cursor.fetchall()
             for row in result:
-                if row[0] == text:
+                if row[0] in text:
                     return row
             return None
     except Exception as s:
@@ -123,4 +120,3 @@ def rider_check(text):
         if connection is not None and connection.is_connected():
             cursor.close()
             connection.close()
-            print("Connection Closed Successfully")

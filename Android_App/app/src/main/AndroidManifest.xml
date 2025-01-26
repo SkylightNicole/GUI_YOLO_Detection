@@ -21,28 +21,19 @@
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".Store"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Rider"
             android:exported="false" />
         <activity
-            android:name=".Change_Pass2"
-            android:exported="false" />
-        <activity
-            android:name=".Change_Password"
-            android:exported="false" />
-        <activity
             android:name=".Register"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".next"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Store"
             android:exported="true"
             android:label="KOKKOK">
             <intent-filter>

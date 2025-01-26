@@ -2,6 +2,7 @@ package com.example.kokok;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.Context;
 import android.view.View;
@@ -16,20 +17,32 @@ public class share_function {
         {
             Intent rider = new Intent(activity,Rider.class);
             activity.startActivity(rider);
+            if (activity instanceof AppCompatActivity) {
+                ((AppCompatActivity) activity).finish(); // Close the current activity
+            }
         }
         else if (view.getId() == R.id.store)
         {
             Intent store = new Intent(activity,Store.class);
             activity.startActivity(store);
+            if (activity instanceof AppCompatActivity) {
+                ((AppCompatActivity) activity).finish(); // Close the current activity
+            }
         } else if (view.getId() == R.id.profile)
         {
             Intent profile = new Intent(activity, Profile.class);
             activity.startActivity(profile);
+            if (activity instanceof AppCompatActivity) {
+                ((AppCompatActivity) activity).finish(); // Close the current activity
+            }
         }
         else if (view.getId() == R.id.setting)
         {
             Intent setting = new Intent(activity,Settings.class);
             activity.startActivity(setting);
+            if (activity instanceof AppCompatActivity) {
+                ((AppCompatActivity) activity).finish(); // Close the current activity
+            }
         }
     }
 }
